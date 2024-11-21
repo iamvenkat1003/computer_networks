@@ -3,6 +3,6 @@ FROM python:3.8-slim
 # Set working directory
 WORKDIR /usr/src/app
 # Copy
-COPY app.py .
+COPY sample.py .
 # run
-CMD [ "python3", "./app.py" ]
+CMD [ "python3", "./sample.py" ]
