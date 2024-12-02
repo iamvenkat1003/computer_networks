@@ -1,0 +1,14 @@
+flask
+flask_sqlalchemy
+flask_mail
+joblib
+pandas
+numpy
+scipy
+matplotlib
+pytest
+python-dotenv
+setuptools
+wheel
+scikit-learn>=0.24.0  # Specify the version based on your compatibility needs
+

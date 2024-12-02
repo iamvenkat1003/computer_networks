@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Homeless Prevention System</title>
+</head>
+<body>
+    <h1>Welcome to the Homeless Prevention System</h1>
+    <div style="margin-top: 30px;">
+        <h2>Please select an option to continue:</h2>
+
+        <!-- Link to User Login Page -->
+        <a href="{{ url_for('login') }}" style="display: inline-block; padding: 12px 24px; margin: 10px; background-color: #4CAF50; color: white; text-decoration: none; border-radius: 5px;">User Login</a><br><br>
+
+        <!-- Link to Guest Access (e.g., Prediction Page) -->
+        <a href="{{ url_for('prediction') }}" style="display: inline-block; padding: 12px 24px; margin: 10px; background-color: #4CAF50; color: white; text-decoration: none; border-radius: 5px;">Guest Login</a><br><br>
+
+        <!-- Link to Admin Login Page -->
+        <a href="{{ url_for('admin_login') }}" style="display: inline-block; padding: 12px 24px; margin: 10px; background-color: #4CAF50; color: white; text-decoration: none; border-radius: 5px;">Admin Login</a><br><br>
+    </div>
+</body>
+</html>

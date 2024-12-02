@@ -14,6 +14,25 @@ jobs:
     - name: Checkout code on this fresh ubuntu OS
       uses: actions/checkout@v4
 
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.11'  
+
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+        pip install pylint  # Install pylint
+      
+    - name: Set Python path
+      run: |
+        export PYTHONPATH=$(pwd)
+    - name: Run Tests
+      run: |
+        pytest ADMIN/test_app.py --maxfail=1 --disable-warnings
+
+
+
     - name: Log in to Docker Hub
       uses: docker/login-action@v2
       with:

@@ -1,0 +1,29 @@
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+h1 {
+    margin-top: 50px;
+}
+
+.login-options {
+    margin-top: 30px;
+}
+
+.btn {
+    text-decoration: none;
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 5px;
+    display: inline-block;
+    font-size: 18px;
+    margin: 10px;
+}
+
+.btn:hover {
+    background-color: #45a049;
+}

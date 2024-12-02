@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homelessness Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Homelessness Prediction</h1>
+    
+    {% if result %}
+        <h2>Prediction Result: {{ result }}</h2>
+        <a href="/prediction">Make another prediction</a>
+    {% else %}
+        <form action="/prediction" method="POST">
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" required><br><br>
+
+            <label for="gender">Gender (0: Male, 1: Female, 2: Other):</label>
+            <input type="number" id="gender" name="gender" min="0" max="2" required><br><br>
+
+            <label for="income">Income Level:</label>
+            <input type="number" id="income" name="income_level" required><br><br>
+
+            <label for="employment">Employment Status (0: Employed, 1: Unemployed, 2: Part-time, 3: Retired):</label>
+            <input type="number" id="employment" name="employment_status" min="0" max="3" required><br><br>
+
+            <label for="education">Education Level (0: No formal education, 1: High School, 2: Associate, 3: Bachelor’s, 4: Master’s):</label>
+            <input type="number" id="education" name="education_level" min="0" max="4" required><br><br>
+
+            <label for="mental_health">Mental Health Status (0: Good, 1: Fair, 2: Poor):</label>
+            <input type="number" id="mental_health" name="mental_health_status" min="0" max="2" required><br><br>
+
+            <label for="substance_abuse">Substance Abuse (0: No, 1: Yes):</label>
+            <input type="number" id="substance_abuse" name="substance_abuse" min="0" max="1" required><br><br>
+
+            <label for="family_status">Family Status (Assumed numeric):</label>
+            <input type="number" id="family_status" name="family_status" required><br><br>
+
+            <label for="housing_history">Housing History (0: Rented, 1: Owned, 2: Homeless in the past, 3: Temporary shelter):</label>
+            <input type="number" id="housing_history" name="housing_history" min="0" max="3" required><br><br>
+
+            <label for="disability">Disability (0: No, 1: Yes):</label>
+            <input type="number" id="disability" name="disability" min="0" max="1" required><br><br>
+
+            <label for="region">Region (0: Urban, 1: Suburban, 2: Rural):</label>
+            <input type="number" id="region" name="region" min="0" max="2" required><br><br>
+
+            <label for="social_support">Social Support (0: Strong, 1: Moderate, 2: Weak):</label>
+            <input type="number" id="social_support" name="social_support" min="0" max="2" required><br><br>
+
+            <button type="submit">Submit</button>
+        </form>
+    {% endif %}
+</body>
+</html>

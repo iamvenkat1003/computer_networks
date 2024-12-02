@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Admin Dashboard</h1>
+    
+    {% if is_superadmin %}
+        <h2>Current Admins</h2>
+        <ul>
+            {% for admin in admins %}
+                <li>{{ admin.username }} - Role: {{ admin.role }}</li>
+            {% endfor %}
+        </ul>
+        
+        <h2>Add New Admin</h2>
+        <form action="{{ url_for('add_admin') }}" method="post">
+            <input type="text" name="username" placeholder="New Admin Username" required><br>
+            <input type="password" name="password" placeholder="Password" required><br>
+            <select name="role" required>
+                <option value="admin">Admin</option>
+                <option value="superadmin">Super Admin</option>
+            </select><br>
+            <button type="submit">Add Admin</button>
+        </form>
+    {% endif %}
+
+    <h2>People List</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Homeless Status</th>
+            {% if is_superadmin %}
+                <th>Action</th>
+            {% endif %}
+        </tr>
+        {% for person in people %}
+        <tr>
+            <td>{{ person.id }}</td>
+            <td>{{ person.name }}</td>
+            <td>{{ person.age }}</td>
+            <td>{{ 'Authorized' if person.homeless_status else 'Pending' }}</td>
+            {% if is_superadmin %}
+            <td>
+                <form action="{{ url_for('authorize_homeless', person_id=person.id) }}" method="post">
+                    <button type="submit">Authorize</button>
+                </form>
+            </td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </table>
+
+    <a href="{{ url_for('admin_logout') }}">Logout</a>
+</body>
+</html>
