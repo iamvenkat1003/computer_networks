@@ -1,12 +1,13 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Register</title>
+    <title>User Registration</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <h2>Register</h2>
+    <h2>Register as a User</h2>
     <form action="/register" method="post">
         <input type="email" name="email" placeholder="Email" required><br>
         <input type="password" name="password" placeholder="Password" required><br>

@@ -8,12 +8,46 @@
 </head>
 <body>
     <h1>Homelessness Prediction</h1>
+    <!-- Flash Messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <ul class="flashes">
+            {% for category, message in messages %}
+                <li class="{{ category }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    {% endwith %}
     
     {% if result %}
         <h2>Prediction Result: {{ result }}</h2>
-        <a href="/prediction">Make another prediction</a>
+        
+        {% if result == 'Homeless' %}
+            <h3>Available Houses for Booking:</h3>
+            <ul>
+                {% for house in houses %}
+                    <li>
+                        <strong>{{ house.address }}, {{ house.city }}, {{ house.state }}, {{ house.zip_code }}</strong>
+                        {% if house.availability %}
+                            <form action="/book_house/{{ house.id }}" method="POST" style="display:inline;">
+                                <button type="submit">Book This House</button>
+                            </form>
+                        {% else %}
+                            <span>(Not Available)</span>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>You are not predicted to be homeless. No houses are available for you to book.</p>
+        {% endif %}
+        
+        <a href="/prediction" class="button">Make another prediction</a>
     {% else %}
         <form action="/prediction" method="POST">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name" required><br><br>
+
             <label for="age">Age:</label>
             <input type="number" id="age" name="age" required><br><br>
 
@@ -35,7 +69,7 @@
             <label for="substance_abuse">Substance Abuse (0: No, 1: Yes):</label>
             <input type="number" id="substance_abuse" name="substance_abuse" min="0" max="1" required><br><br>
 
-            <label for="family_status">Family Status (Assumed numeric):</label>
+            <label for="family_status">Family Status (Numeric value):</label>
             <input type="number" id="family_status" name="family_status" required><br><br>
 
             <label for="housing_history">Housing History (0: Rented, 1: Owned, 2: Homeless in the past, 3: Temporary shelter):</label>

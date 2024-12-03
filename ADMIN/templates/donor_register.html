@@ -1,0 +1,20 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Donor Registration</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h2>Register as a Donor</h2>
+    <form action="/donor/register" method="POST">
+        <label>Email:</label>
+        <input type="email" name="email" required><br>
+        <label>Password:</label>
+        <input type="password" name="password" required><br>
+        <button type="submit">Register</button>
+    </form>
+    <p>Already registered? <a href="{{ url_for('donor_login') }}">Login here</a></p>
+</body>
+</html>

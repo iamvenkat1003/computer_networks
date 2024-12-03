@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Donor Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Donor Dashboard</h1>
+    <h2>Add a House</h2>
+    <form action="/donor/dashboard" method="POST">
+        <label>Address:</label>
+        <input type="text" name="address" required><br>
+        <label>City:</label>
+        <input type="text" name="city" required><br>
+        <label>State:</label>
+        <input type="text" name="state" required><br>
+        <label>ZIP Code:</label>
+        <input type="text" name="zip_code" required><br>
+        <button type="submit">Add House</button>
+    </form>
+    <h2>Your Donated Houses</h2>
+    <ul>
+        {% for house in houses %}
+        <li>
+            {{ house.address }}, {{ house.city }}, {{ house.state }}, {{ house.zip_code }}
+            {% if house.availability %}
+                <span>(Available)</span>
+            {% else %}
+                <span>(Booked)</span>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+    <a href="/logout">Logout</a>
+</body>
+</html>

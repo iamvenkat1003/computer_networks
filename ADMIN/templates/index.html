@@ -4,20 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to Homeless Prevention System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <h1>Welcome to the Homeless Prevention System</h1>
-    <div style="margin-top: 30px;">
-        <h2>Please select an option to continue:</h2>
-
-        <!-- Link to User Login Page -->
-        <a href="{{ url_for('login') }}" style="display: inline-block; padding: 12px 24px; margin: 10px; background-color: #4CAF50; color: white; text-decoration: none; border-radius: 5px;">User Login</a><br><br>
-
-        <!-- Link to Guest Access (e.g., Prediction Page) -->
-        <a href="{{ url_for('prediction') }}" style="display: inline-block; padding: 12px 24px; margin: 10px; background-color: #4CAF50; color: white; text-decoration: none; border-radius: 5px;">Guest Login</a><br><br>
-
-        <!-- Link to Admin Login Page -->
-        <a href="{{ url_for('admin_login') }}" style="display: inline-block; padding: 12px 24px; margin: 10px; background-color: #4CAF50; color: white; text-decoration: none; border-radius: 5px;">Admin Login</a><br><br>
-    </div>
+    <header>
+        <h1>Welcome to the Homeless Prevention System</h1>
+    </header>
+    <main>
+        <div class="container">
+            <h2>Please select an option to continue:</h2>
+            <a href="{{ url_for('login') }}" class="button">User Login</a>
+            <a href="{{ url_for('register') }}" class="button">User Register</a>
+            <a href="{{ url_for('admin_login') }}" class="button">Admin Login</a>
+            <a href="{{ url_for('donor_login') }}" class="button">Donor Login</a>
+            <a href="{{ url_for('donor_register') }}" class="button">Donor Register</a>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Homeless Prevention Platform</p>
+    </footer>
 </body>
 </html>
